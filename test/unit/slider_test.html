@@ -428,6 +428,25 @@
       slider.setValue(2);
       assertEqual("185px", $('handle1').style.left);
       slider.dispose();
+    }},
+    
+    testSetValueWhenDragging: function() { with(this) {
+      var slider = new Control.Slider(['handle5-1','handle5-2'], 'track5',
+        {spans:['span5-1'],range:$R(0,300)});
+      assertInstanceOf(Control.Slider, slider);
+      
+      // emulate dragging of the second slider
+      slider.active = true;
+      slider.activeHandleIdx = 1;
+      
+      slider.setValue(20,  0);
+      slider.setValue(100, 1);
+  
+      assertEqual("20px", $('span5-1').style.left);
+      assertEqual("78px", $('span5-1').style.width);
+      
+      slider.dispose();
+     
     }}
     
   }, "testlog");

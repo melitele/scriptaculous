@@ -126,7 +126,9 @@ Control.Slider = Class.create({
       this.activeHandle    = this.handles[this.activeHandleIdx];
       this.updateStyles();
     }
-    handleIdx = handleIdx || this.activeHandleIdx || 0;
+    if (handleIdx !== 0) {
+        handleIdx = handleIdx || this.activeHandleIdx || 0;
+    }
     if (this.initialized && this.restricted) {
       if ((handleIdx>0) && (sliderValue<this.values[handleIdx-1]))
         sliderValue = this.values[handleIdx-1];
